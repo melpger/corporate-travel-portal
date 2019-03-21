@@ -1,3 +1,4 @@
+import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TourInputComponent } from './tour-input/tour-input.component';
@@ -8,7 +9,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/tourtable', pathMatch: 'full' },
   { path: 'tourinput', component: TourInputComponent },
   { path: 'tourtable', component: TourTableComponent },
-  { path: 'tourdetail', component: TourDetailComponent }
+  { path: 'tourdetail', component: TourDetailComponent },
+  { path: 'login', component: LoginComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

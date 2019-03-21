@@ -10,13 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { TourInputComponent } from './tour-input/tour-input.component';
 import { FormControl, FormGroup, FormBuilder, Validator, Validators,ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TourTableComponent,
     TourInputComponent,
-    TourDetailComponent
+    TourDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
