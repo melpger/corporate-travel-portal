@@ -1,4 +1,5 @@
-import { STATUS } from './constants/constants';
+import { User } from './user';
+import { STATUS, ACCESS_LEVEL } from './constants/constants';
 import { Tour } from './tour';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Injectable } from '@angular/core';
@@ -17,8 +18,19 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 6, purposeOfTour: 'Others', startDate:"2019/7/1", endDate:"2019/8/5",modeofTravel:"Plane",ticketCost:15000,airportCabCostHomeCity:1000,airportCabCostDestCity:500,hotelCost:10000,localConveyanceAtTourLoc:"nothing", status:STATUS.STATUS_REQUEST_FOR_INFORMATION, userid:1 },
 
     ];
-    return {tours};
+
+    const users = [
+      {id: 1, firstName:'Melvin', lastName:'Geremillo', username:'melpger1', password:'melpger1', access_level:ACCESS_LEVEL.ACCESS_LEVEL_EMPLOYEE},
+      {id: 2, firstName:'Poy', lastName:'Geremillo', username:'melpger2', password:'melpger2', access_level:ACCESS_LEVEL.ACCESS_LEVEL_MANAGER},
+      {id: 3, firstName:'melpger', lastName:'Geremillo', username:'melpger3', password:'melpger3', access_level:ACCESS_LEVEL.ACCESS_LEVEL_FINANCE_MANAGER},
+    ];
+
+    return {
+      tours,
+      users
+    };
   }
+
 
   // Overrides the genId method to ensure that a hero always has an id.
   // If the tours array is empty,
