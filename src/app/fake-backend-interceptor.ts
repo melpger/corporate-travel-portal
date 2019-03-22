@@ -43,7 +43,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return of(new HttpResponse({ status: 200, body: body }));
                 } else {
                     // else return 400 bad request
-                    return throwError({ error: { message: 'Username or password is incorrect' } });
+                    console.log("login failed")
+                    return throwError({ error: { status: 400, message: 'Username or password is incorrect' } });
                 }
             }
 

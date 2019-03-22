@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Constants } from './constants/constants';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class AuthenticationService {
 
   login(username: string, password: string) {
     console.log(username, " ", password)
-    return this.http.post<any>(Constants.USER_API_ENDPOINT + '/authenticate', { username: username, password: password })
+    return this.http
+        .post<any>(Constants.USER_API_ENDPOINT + '/authenticate', { username: username, password: password })
         .pipe(map(user => {
             // login successful if there's a jwt token in the response
             if (user && user.token) {
@@ -22,7 +24,8 @@ export class AuthenticationService {
             }
 
             return user;
-        }));
+          }));
+        
 }
 
 logout() {
