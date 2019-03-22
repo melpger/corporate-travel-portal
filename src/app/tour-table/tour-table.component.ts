@@ -33,7 +33,7 @@ export class TourTableComponent implements OnInit {
   }
 
   getLoggedInUser() {
-    this.userService.dummy();
+   
     this.loggedin_user = this.userService.getUser();
     this.user_access_level = this.loggedin_user.access_level;
     this.user_id = this.loggedin_user.id;

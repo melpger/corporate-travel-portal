@@ -12,7 +12,6 @@ import { Location } from '@angular/common';
 })
 export class TourInputComponent implements OnInit {
   private regForm:FormGroup;
-  private ticket:FormControl;
 
   constructor(private tourService:TourService,
     private formBuilder:FormBuilder,

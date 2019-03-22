@@ -1,3 +1,7 @@
+import { ErrorInterceptor } from './error-interceptor';
+import { JwtInterceptor } from './jwt-interceptor';
+import { AuthenticationService } from './authentication.service';
+import { AlertService } from './alert.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,11 +10,16 @@ import { AppComponent } from './app.component';
 import { TourTableComponent } from './tour-table/tour-table.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TourInputComponent } from './tour-input/tour-input.component';
 import { FormControl, FormGroup, FormBuilder, Validator, Validators,ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { TourDetailComponent } from './tour-detail/tour-detail.component';
 import { LoginComponent } from './login/login.component';
+import { AlertComponent } from './alert/alert.component';
+import { UserService } from './user.service';
+import { TourService } from './tour.service';
+import { fakeBackendProvider } from './fake-backend-interceptor';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +27,9 @@ import { LoginComponent } from './login/login.component';
     TourTableComponent,
     TourInputComponent,
     TourDetailComponent,
-    LoginComponent
+    LoginComponent,
+    AlertComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +46,17 @@ import { LoginComponent } from './login/login.component';
     )
   ],
   providers: [
-    FormBuilder
+    FormBuilder,
+    AlertService,
+    AuthenticationService,
+    UserService,
+    TourService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+ 
   ],
   bootstrap: [AppComponent]
 })

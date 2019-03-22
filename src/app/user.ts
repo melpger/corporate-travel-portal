@@ -7,4 +7,5 @@ export class User {
     access_level: ACCESS_LEVEL;
     username: string;
     password: string;
+    token:string;
   }

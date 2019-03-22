@@ -1,3 +1,4 @@
+import { Constants } from './constants/constants';
 import { Tour } from './tour';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
@@ -14,7 +15,7 @@ const httpOptions = {
 })
 export class TourService {
   public tour_cache: Tour;
-  private toursURL = 'api/tours';  // URL to web api
+  private toursURL = Constants.TOUR_API_ENDPOINT;  // URL to web api
 
 
   constructor(

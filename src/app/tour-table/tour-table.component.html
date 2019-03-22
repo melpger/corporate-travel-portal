@@ -38,7 +38,7 @@
 
         <th class="align-middle" *ngIf="tour.status==0;">
           <button class="btn btn-info" (click)="gotoDetails(tour);" *ngIf="isOwner(tour);">Edit</button>
-          <button class="btn btn-primary" (click)="dosubmit(tour);" *ngIf="isVisible(tour,'submit');">Submit</button>
+          <button class="btn btn-primary" (click)="dosubmit(tour);" *ngIf="(isVisible(tour,'submit') && isOwner(tour))">Submit</button>
         </th>
         <th class="align-middle" *ngIf="tour.status==1;">
           <button class="btn btn-info" (click)="gotoDetails(tour);" *ngIf="isOwner(tour);">Edit</button>
@@ -56,7 +56,7 @@
         <th class="align-middle" *ngIf="tour.status==4;"></th>
         <th class="align-middle" *ngIf="tour.status==5;">
           <button class="btn btn-info" (click)="gotoDetails(tour);" *ngIf="isOwner(tour);">Edit</button>
-          <button class="btn btn-primary" (click)="dosubmit(tour);" *ngIf="isVisible(tour,'submit');">Submit</button>
+          <button class="btn btn-primary" (click)="dosubmit(tour);" *ngIf="(isVisible(tour,'submit') && isOwner(tour))">Submit</button>
         </th>
       </tr>
     </tbody>
