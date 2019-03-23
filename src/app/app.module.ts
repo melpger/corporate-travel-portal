@@ -20,6 +20,7 @@ import { UserService } from './user.service';
 import { TourService } from './tour.service';
 import { fakeBackendProvider } from './fake-backend-interceptor';
 import { HomeComponent } from './home/home.component';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    MaterialModule,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.

@@ -1,6 +1,6 @@
 import { STATUS } from './../constants/constants';
 import { TourService } from './../tour.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { Tour } from '../tour';
 import { FormControl, FormGroup, FormBuilder, Validator, Validators,ReactiveFormsModule } from "@angular/forms";
 import { Location } from '@angular/common';
@@ -12,11 +12,12 @@ import { Location } from '@angular/common';
 })
 export class TourInputComponent implements OnInit {
   private regForm:FormGroup;
+  minDate =  new Date();
+  maxDate = new Date(2019, 3, 30);
 
   constructor(private tourService:TourService,
     private formBuilder:FormBuilder,
     private location:Location) { 
-
     this.regForm=this.formBuilder.group({
       purpose:['', Validators.required],
       startdate_v:['', Validators.required],

@@ -1,75 +1,89 @@
 <div class="padding">
-    <form>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <h4>Update Tour</h4>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <h4>Update Tour</h4>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="purposeoftour">Purpose of Tour</label>
+        <select class="form-control" id="purposeoftour" [(ngModel)]="tour.purposeOfTour" name="purpose">
+          <option>Leisure</option>
+          <option>Business</option>
+          <option>Others</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="modeoftravel">Mode of Travel</label>
+        <select class="form-control" id="modeoftravel" [(ngModel)]="tour.modeofTravel" name="modeoftravel">
+          <option>Plane</option>
+          <option>Bus</option>
+          <option>Train</option>
+          <option>Car</option>
+          <option>Cruise</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="startdate">Start Date</label>
+        <br>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker3" [(ngModel)]="startdate.value" [ngModelOptions]="{standalone: true}">
+          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="enddate">End Date</label>
+        <br>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker4" [(ngModel)]="enddate.value" [ngModelOptions]="{standalone: true}">
+          <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+          <mat-datepicker #picker4></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="ticketcost">Ticket Cost</label>
+        <input type="number" min="0" class="form-control" id="ticketcost" placeholder="" [(ngModel)]="tour.ticketCost"
+          name="ticket">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="airportcabcosthomecity">Airport Cab Cost (Home City)</label>
+        <input type="number" min="0" class="form-control" id="airportcabcosthomecity" placeholder=""
+          [(ngModel)]="tour.airportCabCostHomeCity" name="airportcab_home">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="airportcabcostdestcity">Airport Cab Cost (Destination City)</label>
+        <input type="number" min="0" class="form-control" id="airportcabcostdestcity" placeholder=""
+          [(ngModel)]="tour.airportCabCostDestCity" name="airportcab_dest">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="hotelcost">Hotel Cost</label>
+        <input type="number" min="0" class="form-control" id="hotelcost" placeholder="" [(ngModel)]="tour.hotelCost"
+          name="hotel">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="localconveyance">Local Conveyance at Tour Location</label>
+        <textarea class="form-control" id="localconveyance" rows="3" [(ngModel)]="tour.localConveyanceAtTourLoc"
+          name="conveyance"></textarea>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="hotelbills">Hotel Bills</label>
+        <div class="custom-file" id="hotelbills">
+          <input type="file" class="custom-file-input" id="hotelbillinput" aria-describedby="inputGroupFileAddon01">
+          <label class="custom-file-label" for="hotelbillinput">Choose file</label>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="purposeoftour">Purpose of Tour</label>
-          <select class="form-control" id="purposeoftour" [(ngModel)]="tour.purposeOfTour" name="purpose">
-            <option>Leisure</option>
-            <option>Business</option>
-            <option>Others</option>
-          </select>
-        </div>
-        <div class="form-group col-md-6">
-          <label for="modeoftravel">Mode of Travel</label>
-          <select class="form-control" id="modeoftravel" [(ngModel)]="tour.modeofTravel" name="modeoftravel">
-            <option>Plane</option>
-            <option>Bus</option>
-            <option>Train</option>
-            <option>Car</option>
-            <option>Cruise</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="startdate">Start Date</label>
-          <input type="" class="form-control" id="startdate" placeholder="" [(ngModel)]="tour.startDate" name="start">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="enddate">End Date</label>
-          <input type="" class="form-control" id="enddate" placeholder="" [(ngModel)]="tour.endDate" name="end">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-3">
-          <label for="ticketcost">Ticket Cost</label>
-          <input type="number" min="0" class="form-control" id="ticketcost" placeholder="" [(ngModel)]="tour.ticketCost" name="ticket">
-        </div>
-        <div class="form-group col-md-3">
-          <label for="airportcabcosthomecity">Airport Cab Cost (Home City)</label>
-          <input type="number" min="0" class="form-control" id="airportcabcosthomecity" placeholder="" [(ngModel)]="tour.airportCabCostHomeCity" name="airportcab_home">
-        </div>
-        <div class="form-group col-md-3">
-          <label for="airportcabcostdestcity">Airport Cab Cost (Destination City)</label>
-          <input type="number" min="0" class="form-control" id="airportcabcostdestcity" placeholder="" [(ngModel)]="tour.airportCabCostDestCity" name="airportcab_dest">
-        </div>
-        <div class="form-group col-md-3">
-          <label for="hotelcost">Hotel Cost</label>
-          <input type="number" min="0" class="form-control" id="hotelcost" placeholder="" [(ngModel)]="tour.hotelCost" name="hotel">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-12">
-          <label for="localconveyance">Local Conveyance at Tour Location</label>
-          <textarea class="form-control" id="localconveyance" rows="3" [(ngModel)]="tour.localConveyanceAtTourLoc" name="conveyance"></textarea>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-12">
-          <label for="hotelbills">Hotel Bills</label>
-          <div class="custom-file" id="hotelbills">
-            <input type="file" class="custom-file-input" id="hotelbillinput" aria-describedby="inputGroupFileAddon01">
-            <label class="custom-file-label" for="hotelbillinput">Choose file</label>
-          </div>
-        </div>
-      </div>
-      <button class="btn btn-primary" (click)="updateTour()">Update Tour</button>
-      <button class="btn btn-danger" (click)="goBack()">Cancel</button>
-    </form>
-  </div>
-  
+    </div>
+    <button class="btn btn-primary" (click)="updateTour()">Update Tour</button>
+    <button class="btn btn-danger" (click)="goBack()">Cancel</button>
+  </form>
+</div>

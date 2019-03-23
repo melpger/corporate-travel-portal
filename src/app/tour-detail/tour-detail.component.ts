@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { STATUS } from './../constants/constants';
 import { TourService } from './../tour.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +12,8 @@ import { Location } from '@angular/common';
 })
 export class TourDetailComponent implements OnInit {
   tour : Tour;
+  startdate: any;
+  enddate:any;
 
   constructor(
     private location: Location,
@@ -25,6 +28,8 @@ export class TourDetailComponent implements OnInit {
   getTour(): void {
     this.tour = this.tourService.getTourCache();
     console.log(this.tour)
+    this.startdate = new FormControl(new Date(this.tour.startDate));
+    this.enddate = new FormControl(new Date(this.tour.endDate));
   }
 
   updateTour() {
@@ -33,8 +38,8 @@ export class TourDetailComponent implements OnInit {
     let tour : Tour = {
       id: this.tour.id,
       purposeOfTour: this.tour.purposeOfTour,
-      startDate: this.tour.startDate,
-      endDate: this.tour.endDate,
+      startDate: this.startdate.value,
+      endDate: this.enddate.value,
       modeofTravel: this.tour.modeofTravel,
       ticketCost: this.tour.ticketCost,
       airportCabCostHomeCity: this.tour.airportCabCostHomeCity,
